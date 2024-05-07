@@ -13,12 +13,11 @@ const Navbar = ({ props }) => {
 
   useEffect(() => {
     setUser(sessionStorage.getItem("userInfo"));
-    console.log(user);
     setNavIcon(props);
     // eslint-disable-next-line
   }, []);
 
-  const handleNavigate = (navIcon) => {
+  const handleNavigate = () => {
     if (navIcon === "profile" || navIcon === undefined) {
       navigate("/search");
     } else if (navIcon === "search" && user) {
@@ -27,8 +26,6 @@ const Navbar = ({ props }) => {
       navigate("/");
     }
   };
-
-  console.log(navIcon);
 
   return (
     <div className="navbar-container d-flex justify-content-between">
@@ -41,7 +38,7 @@ const Navbar = ({ props }) => {
         alt=""
         width={25}
         className="mb-2 mr-1"
-        onClick={() => handleNavigate(navIcon)}
+        onClick={() => handleNavigate()}
       />
     </div>
   );

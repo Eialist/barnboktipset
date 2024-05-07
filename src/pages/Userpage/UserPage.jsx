@@ -30,6 +30,7 @@ import changeImg from "../../assets/icons/change-img.png";
 import { useFilterGenre } from "../../hooksAndUtils/useFilterGenre";
 import { useSetUserTitle } from "../../hooksAndUtils/useSetUserTitle";
 import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 const UserPage = () => {
   const [user, setUser] = useState({});
@@ -56,12 +57,44 @@ const UserPage = () => {
 
       let data = await res.json();
       setUser(data);
-      console.log(data);
     };
     fetchUser();
   }, []);
 
-  const postReview = async () => {
+  // const postReview = async () => {
+  //   try {
+  //     let headersList = { "Content-Type": "application/json" };
+  //     let bodyContent = JSON.stringify({
+  //       userId: user._id,
+  //       bookId: user.currentRead[0].bookId,
+  //       reviewText: review,
+  //       bookScore: parseInt(bookScore),
+  //       points: user.points,
+  //     });
+  //     console.log(bodyContent);
+
+  //     let res = await fetch("/api/postReview", {
+  //       method: "PATCH",
+  //       body: bodyContent,
+  //       headers: headersList,
+  //     });
+
+  //     if (!res.ok) {
+  //       throw new Error(`Error: ${res.status}`);
+  //     }
+
+  //     if (res.ok) {
+  //       console.log("hello");
+  //     }
+
+  //     let data = await res.json();
+  //     console.log(data.msg);
+  //   } catch (error) {
+  //     console.error("Error", error);
+  //   }
+  // };
+
+  const postReview = useCallback(async () => {
     try {
       let headersList = { "Content-Type": "application/json" };
       let bodyContent = JSON.stringify({
@@ -71,10 +104,9 @@ const UserPage = () => {
         bookScore: parseInt(bookScore),
         points: user.points,
       });
-      console.log(bodyContent);
 
       let res = await fetch("/api/postReview", {
-        method: "POST",
+        method: "PATCH",
         body: bodyContent,
         headers: headersList,
       });
@@ -84,7 +116,7 @@ const UserPage = () => {
       }
 
       if (res.ok) {
-        navigate("/user");
+        console.log("hello");
       }
 
       let data = await res.json();
@@ -92,11 +124,18 @@ const UserPage = () => {
     } catch (error) {
       console.error("Error", error);
     }
+  }, [user._id, user.currentRead, review, bookScore, user.points]);
+
+  const handlePostReview = async (e) => {
+    e.preventDefault();
+    await postReview();
+    setUser((prevUser) => ({
+      ...prevUser,
+      currentRead: [],
+    }));
   };
 
-  const handlePostReview = async () => {
-    await postReview();
-  };
+  console.log(user.currentRead);
 
   const countReadPages = (user) => {
     if (user && user.library && Array.isArray(user.library)) {
@@ -122,25 +161,6 @@ const UserPage = () => {
     }
   };
   getMostCommonGenre();
-
-  // const handleAvatarChange = async () => {
-  //   let headersList = { "Content-Type": "application/json" };
-  //   let bodyContent = JSON.stringify({
-  //     userId: user._id,
-  //     avatar: userAvatar,
-  //   });
-  //   console.log(bodyContent);
-
-  //   let res = await fetch("/api/avatar", {
-  //     method: "PATCH",
-  //     body: bodyContent,
-  //     headers: headersList,
-  //   });
-
-  //   let data = await res.json();
-  //   console.log(data);
-  //   location.reload();
-  // };
 
   const handleAvatarChange = async () => {
     try {
@@ -366,7 +386,6 @@ const UserPage = () => {
                       Skriv recension
                     </button>
                   </div>
-
                   <div>
                     {active ? (
                       <form>
@@ -390,7 +409,7 @@ const UserPage = () => {
                           />
                           <button
                             className="btn btn-dark user-send-review-btn mt-1"
-                            onClick={() => handlePostReview()}>
+                            onClick={handlePostReview}>
                             Skicka
                           </button>
                         </div>

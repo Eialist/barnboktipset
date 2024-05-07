@@ -261,12 +261,11 @@ app.post("/api/auth/login", async (req, res) => {
     fetchUser(req, res);
 })
 
-app.post("/api/postReview", async (req, res) => {
+app.patch("/api/postReview", async (req, res) => {
     const { userId, bookId, reviewText, bookScore, points } = req.body;
     //genre att lägga i en array och ta fram den vanligast förekommande genren. Favvo. 
 
-    const postReview = async (req, res) => {
-        console.log(req.body);
+    const handlePostReview = async (req, res) => {
 
         if (userId == undefined || bookId == undefined || reviewText == undefined || bookScore == undefined) {
             return res.status(403).send({ error: "Viktig information saknas för att kunna posta recenssionen" });
@@ -279,15 +278,16 @@ app.post("/api/postReview", async (req, res) => {
             await fetchDb().collection("reviews").insertOne(reviewObject, { upsert: true });
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, book, { upsert: true });
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, newPoints, { upsert: true });
-            await fetchDb().collection("books").updateOne({ _id: new ObjectId(bookId) }, addRating, { upsert: true })
-            await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, { $unset: { currentRead: "" } });
-            return res.status(200).json({ success: true, msg: 'Ny recenssion skapad!' });
+            await fetchDb().collection("books").updateOne({ _id: new ObjectId(bookId) }, addRating, { upsert: true });
+            await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, { $unset: { currentRead: "" } }, { upsert: true });
+            console.log("ny recenssion skapad")
+            return res.status(200).send({ msg: 'Ny recenssion skapad!' });
         }
         catch (error) {
             return res.status(403).send({ error: error.message })
         }
     }
-    postReview(req, res);
+    handlePostReview(req, res);
 })
 
 app.patch("/api/avatar", async (req, res) => {
