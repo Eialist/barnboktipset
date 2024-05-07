@@ -62,25 +62,40 @@ const UserPage = () => {
   }, []);
 
   const postReview = async () => {
-    let headersList = { "Content-Type": "application/json" };
-    let bodyContent = JSON.stringify({
-      userId: user._id,
-      bookId: user.currentRead[0].bookId,
-      reviewText: review,
-      bookScore: parseInt(bookScore),
-      points: user.points,
-    });
-    console.log(bodyContent);
+    try {
+      let headersList = { "Content-Type": "application/json" };
+      let bodyContent = JSON.stringify({
+        userId: user._id,
+        bookId: user.currentRead[0].bookId,
+        reviewText: review,
+        bookScore: parseInt(bookScore),
+        points: user.points,
+      });
+      console.log(bodyContent);
 
-    let res = await fetch("/api/postReview", {
-      method: "POST",
-      body: bodyContent,
-      headers: headersList,
-    });
+      let res = await fetch("/api/postReview", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      });
 
-    let data = await res.json();
-    console.log(data);
-    setUser((prevUser) => prevUser);
+      if (!res.ok) {
+        throw new Error(`Error: ${res.status}`);
+      }
+
+      if (res.ok) {
+        navigate("/user");
+      }
+
+      let data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
+  const handlePostReview = async () => {
+    await postReview();
   };
 
   const countReadPages = (user) => {
@@ -344,7 +359,7 @@ const UserPage = () => {
                           />
                           <button
                             className="btn btn-dark user-send-review-btn mt-1"
-                            onClick={() => postReview()}>
+                            onClick={() => handlePostReview()}>
                             Skicka
                           </button>
                         </div>

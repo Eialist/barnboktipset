@@ -281,7 +281,7 @@ app.post("/api/postReview", async (req, res) => {
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, newPoints, { upsert: true });
             await fetchDb().collection("books").updateOne({ _id: new ObjectId(bookId) }, addRating, { upsert: true })
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, { $unset: { currentRead: "" } });
-            return res.status(200).send({ msg: 'Ny recenssion skapad!' });
+            return res.status(200).json({ success: true, msg: 'Ny recenssion skapad!' });
         }
         catch (error) {
             return res.status(403).send({ error: error.message })
