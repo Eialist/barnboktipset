@@ -280,16 +280,7 @@ app.post("/api/postReview", async (req, res) => {
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, book, { upsert: true });
             await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, newPoints, { upsert: true });
             await fetchDb().collection("books").updateOne({ _id: new ObjectId(bookId) }, addRating, { upsert: true })
-            try {
-                const result = await fetchDb().collection("users").updateOne(
-                    { _id: new ObjectId(userId) },
-                    { $unset: { currentRead: "" } }
-                );
-                console.log(result);
-            } catch (error) {
-                console.error("Error occurred:", error);
-            }
-
+            await fetchDb().collection("users").updateOne({ _id: new ObjectId(userId) }, { $unset: { currentRead: "" } });
             return res.status(200).send({ msg: 'Ny recenssion skapad!' });
         }
         catch (error) {
