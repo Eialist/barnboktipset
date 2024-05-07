@@ -8,18 +8,23 @@ import profile from "../../assets/icons/profile-user.png";
 // eslint-disable-next-line
 const Navbar = ({ props }) => {
   const [navIcon, setNavIcon] = useState("");
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    setUser(sessionStorage.getItem("userInfo"));
+    console.log(user);
     setNavIcon(props);
     // eslint-disable-next-line
   }, []);
 
   const handleNavigate = (navIcon) => {
-    if (navIcon === "profile") {
+    if (navIcon === "profile" || navIcon === undefined) {
       navigate("/search");
-    } else if (navIcon === "search") {
+    } else if (navIcon === "search" && user) {
       navigate("/user");
+    } else {
+      navigate("/");
     }
   };
 
@@ -32,7 +37,7 @@ const Navbar = ({ props }) => {
         <p>Barnboktipset</p>
       </div>
       <img
-        src={navIcon === "profile" ? search : profile}
+        src={navIcon === "search" ? profile : search}
         alt=""
         width={25}
         className="mb-2 mr-1"

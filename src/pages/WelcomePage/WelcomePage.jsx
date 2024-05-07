@@ -9,7 +9,7 @@ const WelcomePage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Navbar />
+      <Navbar props={""} />
       <div className="welcome-bg">
         <div
           className="welcome-text-container"
