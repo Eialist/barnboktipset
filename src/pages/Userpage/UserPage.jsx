@@ -132,6 +132,7 @@ const UserPage = () => {
     setUser((prevUser) => ({
       ...prevUser,
       currentRead: [],
+      library: user.library,
     }));
   };
 
