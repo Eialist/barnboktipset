@@ -136,3 +136,7 @@
 .avatar-library img:hover{
     border: 1px solid black; 
 }
+
+.user-title {
+    text-align: center;
+}

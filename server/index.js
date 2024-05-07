@@ -2,15 +2,19 @@ import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import dotenv from 'dotenv';
 import getTime from './utils/setDate.js';
-// import path from 'path';
+//and this path
+import path from 'path';
 
 dotenv.config();
 const app = express();
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
+//and these
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+//and these two 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 app.use('/', express.static('dist'));
 
 const PORT = process.env.PORT || 3000;
@@ -24,6 +28,12 @@ function fetchDb() {
     db = client.db("barnboktipset");
     return db;
 }
+
+//added this
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
 
 app.get("/api/users", async (req, res) => {
     let data = await fetchDb().collection("users").find().toArray();

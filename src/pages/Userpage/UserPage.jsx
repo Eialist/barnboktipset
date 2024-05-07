@@ -39,7 +39,7 @@ const UserPage = () => {
   const [bookScore, setBookScore] = useState();
   const [avatarLibrary, setAvatarLibrary] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
-  // const [nextXPReward, setNextXPReward] = useState("");
+  const [reviewSent, setReviewSent] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const UserPage = () => {
       setUser(data);
     };
     fetchUser();
-  }, []);
+  }, [reviewSent]);
 
   // const postReview = async () => {
   //   try {
@@ -132,8 +132,8 @@ const UserPage = () => {
     setUser((prevUser) => ({
       ...prevUser,
       currentRead: [],
-      library: user.library,
     }));
+    setReviewSent(true);
   };
 
   console.log(user.currentRead);
@@ -277,7 +277,7 @@ const UserPage = () => {
               <div className="user-info-text-container">
                 <h2>{user.username}</h2>
                 <p className="user-title">
-                  {useSetUserTitle(user)}{" "}
+                  {useSetUserTitle(user)}
                   {/* <img src={question} alt="" width={13} /> */}
                 </p>
               </div>
