@@ -1,0 +1,50 @@
+.container {
+    padding-top: 3.5em !important; 
+    height: 100vh; 
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-text-container {
+    background-color: rgba(19,51,58,80%);
+    width: 380px;
+    color: white;
+    margin-bottom: 1em; 
+}
+
+.form-control {
+    width: 360px !important; 
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+.login-text-info {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    padding-bottom: 1em; 
+}
+
+.login-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.login-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.login-btn-container {
+    display: flex;
+    justify-content: space-between;
+}

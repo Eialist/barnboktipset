@@ -1,0 +1,34 @@
+/* .welcome-how-to {
+    font-weight: 300;
+} */
+
+.welcome-bg {
+    background-image: url("../../assets/images/welcome-bg.png");
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.welcome-text-container {
+    background-image: url("../../assets/images/papyrus.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: show 1200ms ease-in;
+    /* opacity: 0.9; */
+    margin-bottom: 4em;
+}
+
+.welcome-title {
+    padding: .5em; 
+    font-size: 40px;
+    font-weight: 600;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

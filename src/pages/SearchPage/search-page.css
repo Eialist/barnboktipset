@@ -1,0 +1,155 @@
+.book-cards {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: auto;
+}
+
+
+
+/* @media only screen and (max-width: 600px) { */
+.container {
+    padding: 0 !important; 
+    padding-top: 2em;
+}
+
+.book-card-container {  
+        width: 100vw !important;
+        padding: 0; 
+        padding-top: 5em !important;
+        display: flex;
+        flex: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin-bottom: 1em !important; 
+        border: none !important; 
+        max-width: 750px; 
+    }
+
+    .book-cards {
+        max-height: 150px !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        display: flex;
+        align-items: space-between;
+        position: relative; 
+    }
+
+    .book-text-container {
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-between;
+        margin: .2em .4em;  
+    }
+
+    .book-cards p{
+        font-size: 11px;
+        margin: 0; 
+    }
+    .book-cards > img {
+        height: 150px; 
+        max-width: 110px;
+        min-width: 100px; 
+        object-fit: cover;
+    }
+
+    .book-info-container {
+        width: 100%;
+        display: flex; 
+        font-weight: 500;
+        justify-content: space-between !important;
+    }
+
+    .book-btn {
+        font-size: 12px;
+        padding: 5px !important;
+        position: absolute; 
+        bottom: 0; 
+    }
+
+    .book-text {
+        font-size: 11px !important;
+        height: 65px; 
+        overflow-x: hidden;
+    }
+
+    .book-card-rating-icon {
+        height: 12px !important;
+        width: 12px !important; 
+        margin-bottom: 2.5px; 
+    }
+
+    .book-title {
+        font-weight: 800;
+        font-size: 12px !important;
+    }
+
+    .book-author {
+        font-size: 11px !important;
+        font-weight: 500;
+    }
+
+    .book-review {
+        font-size: 12px;
+        display: flex;
+        padding: .8em 0; 
+        margin: 0; 
+    }
+
+    .book-btn-container {
+        display: flex; 
+        justify-content: space-between;
+        margin: 1em 0; 
+    }
+
+    .book-btn-container button {
+        font-size: 10px !important;
+        padding: .2em .6em !important;
+        min-width: 62px;
+    }
+
+    .book-search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-search {
+        width: 360px; 
+        height: 43px; 
+    }
+
+    .avatar-container {
+        min-width: 40px;
+        max-width: 40px;
+        display: flex;
+        padding-left: 4px;
+    }
+
+    .book-review-avatar {
+        margin-left:4px;
+        width: 25px;
+        height: 30px; 
+        border-radius: 500px;
+    }
+
+    .book-review-text-container > p  {
+        padding: 0; 
+        margin: 0; 
+    }
+
+    .book-review-text-container > p:first-child {
+        font-weight: 600;
+    }
+
+    .book-review:nth-child(even) {
+        background-color: #f3f6ee;
+    }
+
+    .book-review-title {
+        font-size: 12px;
+        font-weight: 600;
+    }
+/* } */

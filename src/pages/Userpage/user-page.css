@@ -1,0 +1,138 @@
+.user-container{
+    color: black;
+}
+
+.user-info-card {
+    padding-top: 4em !important; 
+    background-color: rgba(19,128,138,0.9);
+    background-color: #82B8B4;
+    background-color: #F1F1E6;
+    padding-bottom: 2em;
+}
+
+/* .user-avatar-card img {
+    border-radius: 500px;
+} */
+
+.user-read-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: .25em;
+    position: relative;
+}
+.user-avatar-card {
+    background-color: transparent;
+    width: 130px;
+    height: 100%;
+    border-radius: .25em;
+    padding: .5em;
+    color: black !important;
+}
+
+.user-avatar-card h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin: 0; 
+}
+
+.user-avatar-card p {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 300;
+    margin: 0; 
+}
+
+.user-read-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 14px !important;
+    margin: 0; 
+}
+
+.user-read-text {
+    height: 65px;
+    overflow-y: scroll;
+}
+
+.user-read-img {
+    max-width: 90px;
+    min-width: 90px; 
+    max-height: 125px; 
+    min-height: 125px;
+}
+
+.user-read-text-container {
+    width: 100%;
+    margin: 0 .5em;
+}
+
+.user-read-text-container > div > p{
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0; 
+    padding: 0; 
+}
+
+.user-read-text-container > p {
+    font-size: 11px;
+    margin: 0; 
+}
+
+.user-container > div h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 24px;   
+    color: #fff;
+    text-shadow: 3px 2px 8px #13808A;
+}
+
+.user-info-stats-container p:first-child {
+    font-family: "Inter";
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.user-info-stats-container p {
+    margin: 0; 
+    font-size: 14px;
+}
+
+.user-review-btn {
+    position: absolute; 
+    z-index: 100; 
+    bottom: 0;
+    font-size: 10px !important;
+    padding: .7em !important;
+}
+
+.user-send-review-btn {
+    float: right; 
+}
+
+.form-control {
+    width: 100% !important;
+}
+
+.form-group {
+    position: relative;
+    color: white; 
+}
+
+.user-xp-container {
+    width: 100%;
+    margin: 1em 0; 
+}
+
+.user-xp-container div {
+    overflow: hidden;
+}
+
+.xp-div {
+    border: 1px solid #13808A;
+    flex: 100%;
+}
+
+.avatar-library img:hover{
+    border: 1px solid black; 
+}
