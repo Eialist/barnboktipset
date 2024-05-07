@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:6789",
+  "proxy": "https://barnboktipset.onrender.com",
   "scripts": {
     "dev": "vite",
     "devStart": "nodemon index.js",
