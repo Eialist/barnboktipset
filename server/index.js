@@ -3,18 +3,18 @@ import { MongoClient, ObjectId } from 'mongodb';
 import dotenv from 'dotenv';
 import getTime from './utils/setDate.js';
 //and this path
-import path from 'path';
+// import path from 'path';
 
 dotenv.config();
 const app = express();
 
 //and these
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
 
 //and these two 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 app.use('/', express.static('dist'));
 
 const PORT = process.env.PORT || 3000;
@@ -29,10 +29,10 @@ function fetchDb() {
     return db;
 }
 
-//added this
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
+// //added this
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+// });
 
 
 app.get("/api/users", async (req, res) => {
