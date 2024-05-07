@@ -2,9 +2,11 @@ import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import dotenv from 'dotenv';
 import getTime from './utils/setDate.js';
+import path from 'path';
 
 dotenv.config();
 const app = express();
+app.use(express.static(path.join(__dirname, "dist")));
 
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
