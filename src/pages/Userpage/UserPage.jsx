@@ -80,6 +80,7 @@ const UserPage = () => {
 
     let data = await res.json();
     console.log(data);
+    setUser((prevUser) => prevUser);
   };
 
   const countReadPages = (user) => {
