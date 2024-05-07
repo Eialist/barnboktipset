@@ -385,7 +385,7 @@ async function connectToDb() {
     try {
         await client.connect()
             .then(app.listen(PORT, () => {
-                console.log("Listening on " + PORT && console.log(getTime()));
+                console.log("Listening on " + PORT);
             }))
     } catch (error) {
         console.log(error('Error connecting to database', error))
