@@ -123,23 +123,54 @@ const UserPage = () => {
   };
   getMostCommonGenre();
 
+  // const handleAvatarChange = async () => {
+  //   let headersList = { "Content-Type": "application/json" };
+  //   let bodyContent = JSON.stringify({
+  //     userId: user._id,
+  //     avatar: userAvatar,
+  //   });
+  //   console.log(bodyContent);
+
+  //   let res = await fetch("/api/avatar", {
+  //     method: "PATCH",
+  //     body: bodyContent,
+  //     headers: headersList,
+  //   });
+
+  //   let data = await res.json();
+  //   console.log(data);
+  //   location.reload();
+  // };
+
   const handleAvatarChange = async () => {
-    let headersList = { "Content-Type": "application/json" };
-    let bodyContent = JSON.stringify({
-      userId: user._id,
-      avatar: userAvatar,
-    });
-    console.log(bodyContent);
+    try {
+      let headersList = { "Content-Type": "application/json" };
+      let bodyContent = JSON.stringify({
+        userId: user._id,
+        avatar: userAvatar,
+      });
 
-    let res = await fetch("/api/avatar", {
-      method: "PATCH",
-      body: bodyContent,
-      headers: headersList,
-    });
+      let res = await fetch("/api/avatar", {
+        method: "PATCH",
+        body: bodyContent,
+        headers: headersList,
+      });
 
-    let data = await res.json();
-    console.log(data);
-    location.reload();
+      if (!res.ok) {
+        throw new Error(`Error: ${res.status}`);
+      }
+
+      let data = await res.json();
+      console.log(data);
+
+      // Update user state with the new avatar
+      setUser((prevUser) => ({
+        ...prevUser,
+        avatar: userAvatar,
+      }));
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
 
   let xpBarStyle, xpBarFilledStyle, lvl;
