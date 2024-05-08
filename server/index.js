@@ -380,6 +380,9 @@ app.patch("/api/updateLibrary", async (req, res) => {
     setCurrentRead(req, res);
 })
 
+app.get('/*', function (req, res) {
+    res.sendFile('dist');
+})
 
 
 async function connectToDb() {
