@@ -4,11 +4,11 @@ import FrontLoginPage from "./pages/Frontpage/FrontLoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
-import UserPage from "./pages/UserPage/UserPage";
+import UserPage from "./pages/Userpage/UserPage.jsx";
 
 function App() {
   return (
-    <Router basename="/">
+    <Router>
       <Routes>
         <Route path="/" element={<FrontLoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
