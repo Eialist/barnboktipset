@@ -2,13 +2,13 @@ import "./App.css";
 import RegisterPage from "./pages/Register/RegisterPage";
 import FrontLoginPage from "./pages/Frontpage/FrontLoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import UserPage from "./pages/Userpage/UserPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import UserPage from "./pages/UserPage/UserPage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<FrontLoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
