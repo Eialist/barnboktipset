@@ -380,8 +380,8 @@ app.patch("/api/updateLibrary", async (req, res) => {
     setCurrentRead(req, res);
 })
 
-app.get('/*', function (req, res) {
-    res.sendFile('dist');
+app.get('/*', (req, res) => {
+    res.sendFile('index.html', { root: 'dist' });
 })
 
 
