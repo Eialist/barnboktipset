@@ -26,7 +26,7 @@ import a21 from "../../assets/images/avatars/a21.png";
 import a22 from "../../assets/images/avatars/a22.png";
 import a23 from "../../assets/images/avatars/a24.png";
 import a24 from "../../assets/images/avatars/a25.png";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const avatarImages = {
   goblin: goblin,

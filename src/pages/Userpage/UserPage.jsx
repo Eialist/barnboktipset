@@ -266,7 +266,7 @@ const UserPage = () => {
       <Navbar props={"profile"} />
       <div className="user-container container">
         <div className="user-info-card">
-          <div className="card-body d-flex p-4 pb-2 pt-2">
+          <div className="card-body d-flex p-1 pb-2 pt-2 justify-content-between">
             <div className="user-avatar-card d-flex flex-column align-items-center">
               <div className="position-relative">
                 <img
@@ -495,17 +495,19 @@ const UserPage = () => {
                 padding: ".5em 0",
               }}>
               {user.library &&
-                user.library.map((book) => (
-                  <span key={book.title} className="mr-2">
-                    <img
-                      src={book.img}
-                      alt=""
-                      width={65}
-                      height={100}
-                      style={{ borderRadius: ".15em" }}
-                    />
-                  </span>
-                ))}
+                user.library
+                  .map((book) => (
+                    <span key={book.title} className="mr-2">
+                      <img
+                        src={book.img}
+                        alt=""
+                        width={65}
+                        height={100}
+                        style={{ borderRadius: ".15em" }}
+                      />
+                    </span>
+                  ))
+                  .reverse()}
             </div>
           </div>
         </div>
