@@ -133,7 +133,7 @@ const SearchPage = () => {
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
-        <div className="book-btn-container">
+        <div className="book-btn-container d-flex flex-wrap">
           <button
             className="btn btn-dark m-1"
             onClick={() => handleFilterByGenre(null)}>
@@ -143,6 +143,11 @@ const SearchPage = () => {
             className="btn btn-dark m-1"
             onClick={() => handleFilterByGenre("Fantasy")}>
             Fantasy
+          </button>
+          <button
+            className="btn btn-dark m-1"
+            onClick={() => handleFilterByGenre("Äventyr")}>
+            Äventyr
           </button>
           <button
             className="btn btn-dark m-1"

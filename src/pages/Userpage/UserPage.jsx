@@ -25,6 +25,7 @@ import a21 from "../../assets/images/avatars/a21.png";
 import a22 from "../../assets/images/avatars/a22.png";
 import a23 from "../../assets/images/avatars/a24.png";
 import a24 from "../../assets/images/avatars/a25.png";
+import mana from "../../assets/images/mana.png";
 // import question from "../../assets/icons/question.png";
 import changeImg from "../../assets/icons/change-img.png";
 import { useFilterGenre } from "../../hooksAndUtils/useFilterGenre";
@@ -213,7 +214,7 @@ const UserPage = () => {
     xpBarFilledStyle = {
       width: `${filledWidth}%`,
       height: "100%",
-      // backgroundImage: `url(${mana})`,
+      backgroundImage: `url(${mana})`,
       backgroundColor: "green",
     };
   };
@@ -276,20 +277,40 @@ const UserPage = () => {
               </div>
               <div className="user-info-text-container">
                 <h2>{user.username}</h2>
+                <p className="user-lvl-text">Lvl. {lvl}</p>
                 <p className="user-title">
                   {useSetUserTitle(user)}
                   {/* <img src={question} alt="" width={13} /> */}
                 </p>
               </div>
             </div>
-            <div className="user-info-stats-container ml-4 mt-2">
+            <div className="user-info-stats-container ml-4 mt-3">
               <p>Stats</p>
-              <p>Lästa böcker: {user.library && user.library.length}</p>
-              <p>Sidor lästa: {totalNoOfPages}</p>
-              <p>Favoritgenre: {useFilterGenre(genreArray)}</p>
-              <p>Medlem sedan: {user.createdDate}</p>
-              <p>Poäng samlade: {user.points}</p>
-              <p>Level: {lvl}</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Poäng: </th>
+                    <th>{user.points}</th>
+                  </tr>
+                  <tr>
+                    <th>Lästa böcker:</th>
+                    <th>{user.library && user.library.length}</th>
+                  </tr>
+                  <tr>
+                    <th>Sidor lästa:</th>
+                    <th>{totalNoOfPages}</th>
+                  </tr>
+                  <tr>
+                    <th>Favoritgenre:</th>
+                    <th>{useFilterGenre(genreArray)}</th>
+                  </tr>
+
+                  <tr>
+                    <th>Medlem sedan:</th>
+                    <th>{user.createdDate}</th>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div className="user-xp-container mb-0 mt-0">
@@ -307,7 +328,7 @@ const UserPage = () => {
                 }}>
                 XP-bar
               </p>
-              <div style={xpBarFilledStyle}></div>
+              <div className="xpBarFilledStyle" style={xpBarFilledStyle}></div>
             </div>
           </div>
           {avatarLibrary ? (

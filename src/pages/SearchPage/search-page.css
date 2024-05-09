@@ -107,7 +107,8 @@
     .book-btn-container button {
         font-size: 10px !important;
         padding: .2em .6em !important;
-        min-width: 62px;
+        min-width: 70px;
+        max-width: 70px;
     }
 
     .book-search-container {

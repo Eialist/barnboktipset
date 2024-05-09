@@ -1,13 +1,18 @@
 .user-container{
     color: black;
+    background-image: url("../../assets/images/bg3.png");
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-size: cover;
+    height: 100vh; 
 }
 
 .user-info-card {
-    padding-top: 4em !important; 
+    padding-top: 3.5em !important; 
     background-color: rgba(19,128,138,0.9);
     background-color: #82B8B4;
     background-color: #F1F1E6;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 /* .user-avatar-card img {
@@ -34,6 +39,7 @@
     font-weight: 900;
     font-size: 16px;
     margin: 0; 
+    text-align: center;
 }
 
 .user-avatar-card p {
@@ -79,6 +85,11 @@
     margin: 0; 
 }
 
+.user-lvl-text {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+}
+
 .user-container > div h3 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
@@ -91,6 +102,35 @@
     font-family: "Inter";
     font-weight: 900;
     font-size: 24px;
+    padding-bottom: 4px;
+}
+
+th {
+    width: 100px; 
+    font-size: 13px;
+    font-weight: 300;
+    padding: 3px 0px; 
+}
+th:nth-child(even) {
+    text-align: end;
+}
+th:nth-child(odd) {
+    color: rgb(28, 52, 15);
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
+
+tr:nth-child(odd) {
+    background-color: #e8e7dc; 
+}
+
+.user-info-stats-container {
+    padding: .3em .7em .2em; 
+    border-radius: .25em;
+    /* box-shadow: 0px 0px 1px #c9c9c0;
+    background-color: #fff; */
+    margin-bottom: 0 !important; 
+    max-height: 180px;
 }
 
 .user-info-stats-container p {
@@ -139,4 +179,18 @@
 
 .user-title {
     text-align: center;
+}
+
+.xpBarFilledStyle {
+    animation: slide-in 1500ms ease-in;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        border-radius: 1em; 
+    } to {
+        transform: translateX((0%));
+        border-radius: .5em;
+    }
 }
