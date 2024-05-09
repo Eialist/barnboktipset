@@ -492,7 +492,7 @@ const UserPage = () => {
                 flex: "wrap",
                 overflow: "scroll",
                 backgroundColor: "rgba(19,51,58, 0.8)",
-                padding: ".5em 0",
+                padding: ".5em .25em",
               }}>
               {user.library &&
                 user.library
@@ -501,9 +501,12 @@ const UserPage = () => {
                       <img
                         src={book.img}
                         alt=""
-                        width={65}
+                        width={69}
                         height={100}
-                        style={{ borderRadius: ".15em" }}
+                        style={{
+                          borderRadius: "2px",
+                          boxShadow: "2px 1px 3px rgba(0,0,0,0.5)",
+                        }}
                       />
                     </span>
                   ))
