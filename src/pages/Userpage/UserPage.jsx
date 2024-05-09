@@ -26,6 +26,9 @@ import a22 from "../../assets/images/avatars/a22.png";
 import a23 from "../../assets/images/avatars/a24.png";
 import a24 from "../../assets/images/avatars/a25.png";
 import mana from "../../assets/images/mana.png";
+import star from "../../assets/icons/star1.png";
+import blackStar from "../../assets/icons/star.png";
+import cross from "../../assets/icons/cross.png";
 // import question from "../../assets/icons/question.png";
 import changeImg from "../../assets/icons/change-img.png";
 import { useFilterGenre } from "../../hooksAndUtils/useFilterGenre";
@@ -37,7 +40,7 @@ const UserPage = () => {
   const [user, setUser] = useState({});
   const [active, setActive] = useState(false);
   const [review, setReview] = useState("");
-  const [bookScore, setBookScore] = useState();
+  const [bookScore, setBookScore] = useState(0);
   const [avatarLibrary, setAvatarLibrary] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
   const [reviewSent, setReviewSent] = useState(false);
@@ -253,6 +256,11 @@ const UserPage = () => {
     (key) => avatars[key].name === user.avatar
   );
 
+  const starsArray = [1, 2, 3, 4, 5];
+  const handleStarClick = (value) => {
+    setBookScore(value); // Update the book score state
+  };
+
   return (
     <>
       <Navbar props={"profile"} />
@@ -332,8 +340,19 @@ const UserPage = () => {
             </div>
           </div>
           {avatarLibrary ? (
-            <div className="p-1">
+            <div className="p-1 position-relative">
               <h2 className="text-center mt-3">Byt avatar</h2>
+              <img
+                src={cross}
+                alt=""
+                width={30}
+                style={{
+                  position: "absolute",
+                  top: "1.2em",
+                  right: "1em",
+                }}
+                onClick={() => setAvatarLibrary((prevState) => !prevState)}
+              />
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
                 {Object.values(avatars).map((avatar, index) => (
@@ -411,10 +430,27 @@ const UserPage = () => {
                   <div>
                     {active ? (
                       <form>
-                        <div className="form-group">
+                        <div className="form-group position-relative">
                           <label htmlFor="reviewText">
-                            Vad tyckte du om boken?
+                            <h3 className="mt-4 mb-0">
+                              Vad tyckte du om boken?
+                            </h3>
                           </label>
+                          <p style={{ fontSize: "12px" }}>
+                            Skriv lite om boken och vad du tyckte utan att
+                            spoila berättelsen.
+                          </p>
+                          <img
+                            src={cross}
+                            alt=""
+                            width={30}
+                            style={{
+                              position: "absolute",
+                              top: "1.4em",
+                              right: "0",
+                            }}
+                            onClick={() => setActive((prevState) => !prevState)}
+                          />
                           <textarea
                             className="form-control"
                             id="reviewText"
@@ -422,13 +458,17 @@ const UserPage = () => {
                             onChange={(e) =>
                               setReview(e.target.value)
                             }></textarea>
-                          <label>Betyg mellan 1 och 5. 5 = Jättebra!</label>
-                          <input
-                            type="text"
-                            maxLength={1}
-                            style={{ width: "40px" }}
-                            onChange={(e) => setBookScore(e.target.value)}
-                          />
+                          <span>
+                            {starsArray.map((index) => (
+                              <img
+                                key={index}
+                                src={index <= bookScore ? star : blackStar} // Use yellow star image if index <= bookScore, otherwise use gray star image
+                                alt=""
+                                className="user-review-star"
+                                onClick={() => handleStarClick(index)} // Increment book score when clicked
+                              />
+                            ))}
+                          </span>
                           <button
                             className="btn btn-dark user-send-review-btn mt-1"
                             onClick={handlePostReview}>

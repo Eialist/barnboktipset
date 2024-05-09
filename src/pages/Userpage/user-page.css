@@ -185,6 +185,11 @@ tr:nth-child(odd) {
     animation: slide-in 1500ms ease-in;
 }
 
+.user-review-star {
+    width: 30px;
+}
+
+
 @keyframes slide-in {
     from {
         transform: translateX(-100%);

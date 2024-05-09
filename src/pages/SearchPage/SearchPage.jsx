@@ -22,6 +22,11 @@ import a17 from "../../assets/images/avatars/a17.png";
 import a18 from "../../assets/images/avatars/a18.png";
 import a19 from "../../assets/images/avatars/a19.png";
 import a20 from "../../assets/images/avatars/a20.png";
+import a21 from "../../assets/images/avatars/a21.png";
+import a22 from "../../assets/images/avatars/a22.png";
+import a23 from "../../assets/images/avatars/a24.png";
+import a24 from "../../assets/images/avatars/a25.png";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const avatarImages = {
   goblin: goblin,
@@ -44,6 +49,10 @@ const avatarImages = {
   a18: a18,
   a19: a19,
   a20: a20,
+  a21: a21,
+  a22: a22,
+  a23: a23,
+  a24: a24,
 };
 
 const SearchPage = () => {
@@ -52,6 +61,7 @@ const SearchPage = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [reviews, setReviews] = useState(false);
   const [selectedBookId, setSelectedBookId] = useState(null);
+  const navigate = useNavigate();
 
   let user = sessionStorage.getItem("userInfo");
   user = JSON.parse(user);
@@ -120,6 +130,7 @@ const SearchPage = () => {
     });
     let data = await res.json();
     console.log(data);
+    navigate("/user");
   };
 
   return (
