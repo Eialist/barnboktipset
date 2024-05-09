@@ -136,7 +136,7 @@ const SearchPage = () => {
   return (
     <>
       <Navbar props={"search"} />
-      <div className="book-card-container container">
+      <div className="book-card-container container fade-container">
         <div className="book-search-container">
           <input
             className="book-search"

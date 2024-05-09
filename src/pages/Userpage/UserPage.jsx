@@ -27,7 +27,7 @@ import a23 from "../../assets/images/avatars/a24.png";
 import a24 from "../../assets/images/avatars/a25.png";
 import mana from "../../assets/images/mana.png";
 import star from "../../assets/icons/star1.png";
-import blackStar from "../../assets/icons/star.png";
+import whiteStar from "../../assets/icons/starwhite.png";
 import cross from "../../assets/icons/cross.png";
 // import question from "../../assets/icons/question.png";
 import changeImg from "../../assets/icons/change-img.png";
@@ -264,7 +264,7 @@ const UserPage = () => {
   return (
     <>
       <Navbar props={"profile"} />
-      <div className="user-container container">
+      <div className="user-container container fade-container">
         <div className="user-info-card">
           <div className="card-body d-flex p-1 pb-2 pt-2 justify-content-between">
             <div className="user-avatar-card d-flex flex-column align-items-center">
@@ -462,7 +462,7 @@ const UserPage = () => {
                             {starsArray.map((index) => (
                               <img
                                 key={index}
-                                src={index <= bookScore ? star : blackStar} // Use yellow star image if index <= bookScore, otherwise use gray star image
+                                src={index <= bookScore ? star : whiteStar} // Use yellow star image if index <= bookScore, otherwise use gray star image
                                 alt=""
                                 className="user-review-star"
                                 onClick={() => handleStarClick(index)} // Increment book score when clicked

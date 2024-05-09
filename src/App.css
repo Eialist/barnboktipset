@@ -3,7 +3,27 @@ body {
   background-size: cover;
   height: 100vh; 
   padding: 0;
-  margin: 0; 
+  margin: 0;
+}
+
+div {
+  animation: fadeInAnimation ease-in .3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.navbar-container {
+  animation: none !important; 
+}
+
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 
 h1, h2, h3 {

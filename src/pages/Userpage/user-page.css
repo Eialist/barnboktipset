@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: fixed;
     background-size: cover;
-    height: 100vh; 
+    height: 100%; 
 }
 
 .user-info-card {
@@ -187,6 +187,7 @@ tr:nth-child(odd) {
 
 .user-review-star {
     width: 30px;
+    margin: 5px 5px 5px 0;
 }
 
 
