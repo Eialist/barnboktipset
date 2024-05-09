@@ -44,6 +44,7 @@ const UserPage = () => {
   const [avatarLibrary, setAvatarLibrary] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
   const [reviewSent, setReviewSent] = useState(false);
+  const [msg, setMsg] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -99,34 +100,38 @@ const UserPage = () => {
   // };
 
   const postReview = useCallback(async () => {
-    try {
-      let headersList = { "Content-Type": "application/json" };
-      let bodyContent = JSON.stringify({
-        userId: user._id,
-        bookId: user.currentRead[0].bookId,
-        reviewText: review,
-        bookScore: parseInt(bookScore),
-        points: user.points,
-      });
+    if (review && bookScore) {
+      try {
+        let headersList = { "Content-Type": "application/json" };
+        let bodyContent = JSON.stringify({
+          userId: user._id,
+          bookId: user.currentRead[0].bookId,
+          reviewText: review,
+          bookScore: parseInt(bookScore),
+          points: user.points,
+        });
 
-      let res = await fetch("/api/postReview", {
-        method: "PATCH",
-        body: bodyContent,
-        headers: headersList,
-      });
+        let res = await fetch("/api/postReview", {
+          method: "PATCH",
+          body: bodyContent,
+          headers: headersList,
+        });
 
-      if (!res.ok) {
-        throw new Error(`Error: ${res.status}`);
+        if (!res.ok) {
+          throw new Error(`Error: ${res.status}`);
+        }
+
+        if (res.ok) {
+          console.log("hello");
+        }
+
+        let data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error", error);
       }
-
-      if (res.ok) {
-        console.log("hello");
-      }
-
-      let data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Error", error);
+    } else {
+      setMsg("Skriv en recenssion och ge ett betyg för att kunna skicka in!");
     }
   }, [user._id, user.currentRead, review, bookScore, user.points]);
 
@@ -137,7 +142,7 @@ const UserPage = () => {
       ...prevUser,
       currentRead: [],
     }));
-    setReviewSent(true);
+    setReviewSent((prevState) => !prevState);
   };
 
   console.log(user.currentRead);
@@ -451,6 +456,7 @@ const UserPage = () => {
                             }}
                             onClick={() => setActive((prevState) => !prevState)}
                           />
+                          {msg}
                           <textarea
                             className="form-control"
                             id="reviewText"
