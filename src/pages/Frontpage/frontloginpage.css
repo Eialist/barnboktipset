@@ -12,9 +12,11 @@
 
 .login-text-container {
     background-color: rgba(19,51,58,80%);
+    backdrop-filter: blur(4px);
     width: 380px;
     color: white;
     margin-bottom: 1em; 
+    border-radius: 4.3px;
 }
 
 .form-control {
@@ -47,4 +49,5 @@
 .login-btn-container {
     display: flex;
     justify-content: space-between;
+    gap: 1em; 
 }

@@ -38,15 +38,6 @@ const FrontLoginPage = () => {
     <>
       <Navbar />
       <div className="login-container container">
-        {/* <div className="login-text-container">
-          <div className="m-3">
-            <h1 className="login-title">Välkommen till Barnboktipset</h1>
-            <p className="login-text">
-              Stig in i vår boksvärld! Skapa, läs, recensera och lås upp grymma
-              belöningar. Upplev läsning på ett helt nytt sätt!
-            </p>
-          </div>
-        </div> */}
         <div className="login-text-container">
           <div className="d-flex flex-column align-items-center p-4">
             <span>{msg}</span>

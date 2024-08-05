@@ -62,6 +62,7 @@ const UserPage = () => {
 
       let data = await res.json();
       setUser(data);
+      console.log(data);
     };
     fetchUser();
   }, [reviewSent]);
@@ -144,8 +145,6 @@ const UserPage = () => {
     }));
     setReviewSent((prevState) => !prevState);
   };
-
-  console.log(user.currentRead);
 
   const countReadPages = (user) => {
     if (user && user.library && Array.isArray(user.library)) {
@@ -372,9 +371,9 @@ const UserPage = () => {
                         filter: avatar.unlocked ? "none" : "grayscale(100%)",
                       }}
                       onClick={
-                        lvl === avatar.unlocked
-                          ? () => setUserAvatar(user.avatar)
-                          : () => setUserAvatar(avatar.name)
+                        avatar.unlocked
+                          ? () => setUserAvatar(avatar.name)
+                          : () => setUserAvatar(user.avatar)
                       }
                     />
                   </div>
@@ -435,7 +434,7 @@ const UserPage = () => {
                   <div>
                     {active ? (
                       <form>
-                        <div className="form-group position-relative">
+                        <div className="form-group position-relative user-form-group">
                           <label htmlFor="reviewText">
                             <h3 className="mt-4 mb-0">
                               Vad tyckte du om boken?
@@ -452,7 +451,7 @@ const UserPage = () => {
                             style={{
                               position: "absolute",
                               top: "1.4em",
-                              right: "0",
+                              right: "1em",
                             }}
                             onClick={() => setActive((prevState) => !prevState)}
                           />
@@ -490,7 +489,7 @@ const UserPage = () => {
               ))
             )}
           </div>
-          <div className="">
+          <div className="user-library-list">
             <h3>Bibliotek</h3>
             <div
               style={{
@@ -505,6 +504,7 @@ const UserPage = () => {
                   .map((book) => (
                     <span key={book.title} className="mr-2">
                       <img
+                        className="user-library-book"
                         src={book.img}
                         alt=""
                         width={69}

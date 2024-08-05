@@ -12,13 +12,15 @@
 
 .register-text-container {
     background-color: rgba(19,51,58,80%);
+    backdrop-filter: blur(4px);
     width: 380px;
     color: white;
-    margin-bottom: 1em; 
+    margin-bottom: 2em; 
+    border-radius: 4.3px;
 }
 
-.form-control {
-    width: 360px !important; 
+.form-group {
+    width: 360px;
 }
 
 .form-group label {

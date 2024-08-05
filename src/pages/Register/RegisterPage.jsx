@@ -43,9 +43,9 @@ const RegisterPage = () => {
             <div className="d-flex flex-column align-items-center m-auto pt-4">
               <form className="">
                 <div className="form-group">
-                  <h1 className="register-text-info pb-3">
+                  <h4 className="register-text-info pb-3">
                     Skapa ny användare
-                  </h1>
+                  </h4>
                   <label htmlFor="username">Välj ett användarnamn</label>
                   <input
                     type="text"
